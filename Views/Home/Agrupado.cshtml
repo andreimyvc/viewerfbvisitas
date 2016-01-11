@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<fbVisitList.Models.Visitante>
 @{
-    ViewBag.Title = "Viewer Visitas";
+    ViewBag.Title = "Viewer Visitas - Agrupado";
 }
 
 <h2>Del Eraser Viewer</h2>
@@ -17,8 +17,8 @@
     }
 
 </style>
-@Html.ActionLink("Ver Agrupado","Agrupado")
-@using (Html.BeginForm("Index","Home"))
+@Html.ActionLink("Regresar","Index")
+@using (Html.BeginForm("Agrupado","Home"))
 {
     @*<iframe src="https://www.facebook.com"></iframe>*@
     <textarea name="data"></textarea>
@@ -34,6 +34,7 @@
                 <th>Id</th>
                 <th>Nombre y Apellido</th>
                 <th>Foto</th>
+                <th>Visitas</th>
                 <th>Link</th>
             </tr>
         </thead>
@@ -44,6 +45,7 @@
                     <td>@v.Id</td>
                     <td>@v.Fullname</td>
                     <td><img src="@v.UrlPicture" /> </td>
+                    <td>@v.NumeroVisitas</td>
                     <td><a href="@v.UrlPerfil">Ver Perfil</a></td>
                 </tr> 
             }
