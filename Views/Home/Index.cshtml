@@ -1,0 +1,60 @@
+﻿@model IEnumerable<fbVisitList.Models.Visitante>
+@{
+    ViewBag.Title = "Viewer Visitas";
+}
+
+<h2>Del Eraser Viewer</h2>
+<style>
+    table {
+        border-collapse: collapse;
+    width: 100%;
+    }
+    table, th, td {
+        border: 1px solid black;
+    }
+    th {
+        height: 50px;
+    }
+
+</style>
+@using (Html.BeginForm("Index","Home"))
+{
+    @*<iframe src="https://www.facebook.com"></iframe>*@
+    <textarea name="data"></textarea>
+    <br />
+    <input type="submit" value="Buscar" />
+}
+
+@if (Model != null)
+{
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre y Apellido</th>
+                <th>Foto</th>
+                <th>Link</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var v in Model)
+            {
+                <tr>
+                    <td>@v.Id</td>
+                    <td>@v.Fullname</td>
+                    <td><img src="@v.UrlPicture" /> </td>
+                    <td><a href="@v.UrlPerfil">Ver Perfil</a></td>
+                </tr> 
+            }
+        </tbody>
+    </table> 
+    @*@Html.Grid(Model).Columns(columns =>
+    {
+        columns.Add(model => model.Id).Sortable(true);
+        columns.Add(model => model.Fullname).Sortable(true);
+    }
+    ).WithPaging(7);*@   
+} 
+
+
+
